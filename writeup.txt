@@ -1,0 +1,42 @@
+Done by Nicholas Campagna
+nicholas_campagna@student.uml.edu
+I am a student at UMass Lowell, in COMP4610 (or 91.61) GUI Programming 1
+Finished December 22nd, 2019
+
+My program functions by making two div areas in the html file, "rackZone" and "board".
+In the .js file, rackZone has seven tiles appended, and board has seven slots appended.
+The process of appending the tiles to rackZone is its own function, as the button "Cash In"
+allows the user to submit their tiles on the board slots and then draws the appropriate amount
+back into their rack. Speaking of which, the most challenging part was probably handling all the
+issues surrounding tiles being moved from the rack to the board, from the board to the rack, and
+from one slot on the board to another. To accomplish this, when a tile is created, it is given
+a "racked" class, which signifies that it is on the rack (where it is appended by default).
+The rack and each of the board "slots" are dropzones, and both the rack and all the slots collectively
+have their own "drop" function that is called when one of the draggable tiles is dropped into either.
+When a draggable tile is dropped into a slot, "slotTile" is called. When this happens, the tile is 
+checked to see if it has a "racked" class. If so, the "racked" class is removed and replaced with 
+"slotted". The tile is then given a "slot_x" class, where "x" corresponds to one of each of the 
+seven slots. Finally, since the tile had a "racked" class, that means it was previously in the rack,
+so the "tilesInHand" value is subtracted by 1. "tilesInHand" keeps track of the tiles in the user's 
+hand/rack, which is used by drawTiles to determine the right about of tiles to draw when required.
+If the tile already has a "slotted" class, then it is checked to see if the "slot_x"
+class on the tile is the same as the "slot_x" class on the board slot. If so, then there's no issue,
+BUT if the slot_x class on the tile IS different, then the slot that has the same "slot_x" class must
+have its ID set to "" to remove the tile value from the previous slot (this handles slot->slot movement).
+In either case, whenever a tile is dropped into a slot on the board, the ID of the slot is set to the
+ID of the tile, which is the index position of the tile's letter in pieces[], the data structure provided.
+This allows each slot to identify which tile is placed on it, as required in the instructions.
+returnTile likewise works the same way, checking if a tile came from a slot and if so, it removes the
+"slotted" class, finds out the "slot_x" that the tile has, sets the "slot_x" slot's ID to "", then adds
+the "racked" class to signify the tile as being racked before increasing "tilesInHand" by 1. If there is
+no "slotted" class, then the tile was previously racked, so "tilesInHand" does not need to be incremented.
+Lastly, the two buttons call their own functions respectively. The "Cash In" button calls cashIn, which
+tallies up the score of all tiles on the board by iterating through all the slots, and if they have an ID
+that isn't "" then it searches the index in pieces[] and finds the associated value, then adds it to the
+local variable "roundScore". If any tile is on either or both of the "double word" slots, then "roundScore"
+is doubled for each of the slots filled before being added to the main score. The tiles on the board are then
+deleted and drawTiles is called, which fills the rack until there are 7 tiles total (while respectively
+decreasing the amount of total tiles as well as the amount of each specific tile in pieces[]). The "Restart"
+button restarts the game, setting the score to 0, the total tiles to 100, deletes all the tiles (so that the
+user may have a fresh hand), iterates through pieces[] and sets the amounts of each tiles back to their max
+values, sets the tilesInHand to 0 then calls drawTiles for a fresh hand and a fresh game.

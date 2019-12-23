@@ -1,0 +1,47 @@
+<!--Page by Nicholas Campagna
+nicholas_campagna@student.uml.edu
+I am a student at UMass Lowell, in COMP4610 (or 91.61) GUI Programming 1
+File Created November 13th, 2019
+This is an HTML file that is edited from my HW4 to preserve the same style while fulfilling HW6 requirements. -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The page is down there, silly.</title>
+        <link href="css\HW7.css" rel="stylesheet">
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel = "stylesheet">
+    </head>
+    <body><!-- page content -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"></script>
+    <div id="page">
+        <!-- Title, Main Content -->
+        <h1>Nick Campagna Homework 9</h1>
+        <p>Here's some scrabble, enjoy.</p>
+        <h2 id="displayScore">Score: 0</h2>
+        <h2 id="displayTileCount">Tiles: 100</h2>
+
+        <!-- "rackzone" will be where tiles are spawned/held using scrabble.js
+        Their format will be:
+        <img id="[INDEX OF TILE IN PIECES[]]" class="tiles" src="images/tiles/Scrabble_Tile_[LETTER].jpg\">    -->
+        <div id="rackzone"></div>
+
+        <!-- "board" will be where the board slots will be spawned using scrabble.js
+        Their format will be:
+        <img id="[BLANK OR INDEX OF STORED TILE]" class="slots" src="images/board/[board/bordDouble].jpg">    -->
+        <div id="board"></div>
+
+        <button id="cashIn">Cash In</button>
+        <button id="restart">Restart</button>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <script src="https://code.jquery.com/ui/jquery-ui-git.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="js/scrabble.js"></script>
+    <!--<script src="js/HW7.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/sliders.js"></script>
+    <script src="js/tabs.js"></script>-->
+    </body>
+</html>
